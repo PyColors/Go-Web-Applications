@@ -9,7 +9,7 @@ type myHandler struct {
 	greeting string
 }
 
-// Method take two argument ResponseWriter and a pointer http.Request
+// Method takes two argument ResponseWriter and a pointer http.Request
 func (mh myHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(fmt.Sprintf("%v world", mh.greeting)))
 }
