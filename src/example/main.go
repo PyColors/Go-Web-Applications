@@ -1,10 +1,20 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
+
+type myHandler struct {
+	greeting string
+}
+
+// Method takes two argument ResponseWriter and a pointer http.Request
+func (mh myHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte(fmt.Sprintf("%v world", mh.greeting)))
+}
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello world"))
-	})
+	http.Handle("/", &myHandler{greeting: "Hello"})
 	http.ListenAndServe(":8000", nil)
 }
