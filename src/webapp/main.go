@@ -16,7 +16,7 @@ func main() {
 		// `os.Open()` from os package
 		f, err := os.Open("public" + r.URL.Path)
 
-		// CHek if file was open successfully
+		// Chek if file was open successfully
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			log.Println(err)
