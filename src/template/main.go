@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"html/template" // also "text/template" both are quite similar
 	"os"
+	"text/template" // also "html/template" both are quite similar but not for security issues
 )
 
 func main() {
@@ -19,7 +19,12 @@ func main() {
 	}
 
 	// Execute the template
+	// He is actually another operation can be fail (the error value)
+	// First parameter: `Stdout` allows us to see the print out in the console
+	// Second parameter: `nil` - by the name `data interface {}`
 	err = t.Execute(os.Stdout, nil)
+
+	// if errors come in
 	if err != nil {
 		fmt.Print(err)
 	}
