@@ -24,8 +24,15 @@ func (p Product) PriceWithTax() float32 {
 }
 
 
+// Template
+// no reason to have a `string` into that syntax {{ }}
+// just for test
+// `-` Skip all write space after or before
 const templateString  = `
-
+{{- "Item information" }}
+Name: {{ .Name }}
+Price: {{ printf "$%.2f" .Price }}
+Price with Tax: {{ .PriceWithTax | printf "$%.2f" }}
 `
 
 // Find a product and his price with
